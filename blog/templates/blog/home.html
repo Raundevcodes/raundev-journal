@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RaunDev - Journal</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'blog/styles.css' %}">
+</head>
+<body>
+
+  <header>
+    <h1>RaunDev - Journal</h1>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <img src="{% static 'blog/featured.jpg' %}" alt="Featured Image">
+      <nav>
+        <ul>
+          <li><a href="https://raundev.com/index.html">Home</a></li>
+        <!--  <li><a href="#">About Me</a></li>
+          <li><a href="#">Projects</a></li>
+          <li><a href="#">Contact</a></li> -->
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <article class="post">
+        <h2>From Static to Dynamic: My Developer Journey So Far</h2>
+        <p class="post-date">Posted on August 30, 2025</p>
+        <p>It started with a password generator.
+A simple desktop app built with Python and Tkinter — my first taste of GUI design, logic, and user interaction. It wasn’t flashy, but it worked. And more importantly, I built it.
+Then came the website.
+Static, elegant, and full of style.
+Crafted with HTML and CSS, sprinkled with JavaScript to add just enough sparkle. It was my digital canvas — a place to showcase, experiment, and express.
+But static wasn’t enough.
+I wanted more than pages. I wanted power.
+So I began learning Django — a framework that felt intimidating at first, but quickly revealed its elegance. I set up my first project, created a blog app, built models, views, and templates. I debugged errors, ran migrations, and watched my first post appear on the homepage.
+Now, I’m building a blog that will integrate with my existing site — and eventually, replace it.
+The goal is to rebuild the entire website using Django, transforming it from a static showcase into a dynamic, database-driven experience.
+It’s not just about code anymore.
+It’s about growth.
+About learning how to build something that lives, breathes, and evolves.
+This is my journey — from desktop to web, from static to dynamic.
+And it’s only just beginning.</p>
+      </article>
+    </main>
+  </div>
+
+  <footer>
+    &copy; 2025 RaunDev. Built with Django and a lot of curiosity.
+  </footer>
+
+</body>
+</html>
