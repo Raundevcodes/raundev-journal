@@ -39,15 +39,15 @@ h1 {
 
 /* Post Container */
 .post {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   border-bottom: 1px solid #ccc;
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
 }
 
 /* Post Title */
 .post h2 {
-  font-size: 1.5rem;
-  margin: 0;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
   color: #FFAE03; /* RaunDev yellow accent */
 }
 
@@ -62,9 +62,10 @@ h1 {
 /* Post Date */
 .post-date {
   font-style: italic;
-  color: #888;
+  font-size: 0.9rem;
+  color: #666;
   margin-top: -1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 /* Footer */
