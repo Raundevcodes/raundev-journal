@@ -24,28 +24,17 @@
         </ul>
       </nav>
     </aside>
-
-    <main class="content">
-      <article class="post">
-        <h2>From Static to Dynamic: My Developer Journey So Far</h2>
-        <p class="post-date">Posted on August 30, 2025</p>
-        <p>It started with a password generator.
-A simple desktop app built with Python and Tkinter — my first taste of GUI design, logic, and user interaction. It wasn’t flashy, but it worked. And more importantly, I built it.
-Then came the website.
-Static, elegant, and full of style.
-Crafted with HTML and CSS, sprinkled with JavaScript to add just enough sparkle. It was my digital canvas — a place to showcase, experiment, and express.
-But static wasn’t enough.
-I wanted more than pages. I wanted power.
-So I began learning Django — a framework that felt intimidating at first, but quickly revealed its elegance. I set up my first project, created a blog app, built models, views, and templates. I debugged errors, ran migrations, and watched my first post appear on the homepage.
-Now, I’m building a blog that will integrate with my existing site — and eventually, replace it.
-The goal is to rebuild the entire website using Django, transforming it from a static showcase into a dynamic, database-driven experience.
-It’s not just about code anymore.
-It’s about growth.
-About learning how to build something that lives, breathes, and evolves.
-This is my journey — from desktop to web, from static to dynamic.
-And it’s only just beginning.</p>
-      </article>
-    </main>
+<main class="content">
+  {% for post in posts %}
+    <article class="post">
+      <h2>{{ post.title }}</h2>
+      <p class="post-date">Posted on {{ post.created_at|date:"F j, Y" }}</p>
+      <p>{{ post.body|linebreaks }}</p>
+    </article>
+  {% empty %}
+    <p>No posts yet!</p>
+  {% endfor %}
+</main>
   </div>
 
   <footer>
