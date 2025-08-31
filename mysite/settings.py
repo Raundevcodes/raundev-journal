@@ -10,6 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 import os
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
 
 from pathlib import Path
 
@@ -26,7 +29,7 @@ SECRET_KEY = 'django-insecure-rl#8vp5jjxfrmccwq8c-qfoq2i9gocbds&awj0-8kwfn3ik^f(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['blog.raundev.com', 'raundev-journal.onrender.com']
+ALLOWED_HOSTS = ['raunblog.raundev.com', 'raundev-journal.onrender.com']
 
 
 # Application definition
@@ -38,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog', # ← Add this line if it's missing
+    'raunblog', # ← Add this line if it's missing
 ]
 
 MIDDLEWARE = [
@@ -120,7 +123,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'blog/static'),
+    os.path.join(BASE_DIR, 'raunblog/static'),
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
