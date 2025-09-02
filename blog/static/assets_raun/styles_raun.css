@@ -46,14 +46,14 @@ h1 {
 
 /* Post Title */
 .post h2 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-bottom: 0.5rem;
   color: #FFAE03; /* RaunDev yellow accent */
 }
 
 /* Post Body */
 .post p {
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
   line-height: 1.6;
@@ -66,6 +66,25 @@ h1 {
   color: #666;
   margin-top: -1rem;
   margin-bottom: 1rem;
+}
+
+.post {
+  border-bottom: 1px solid #ccc;
+  padding: 1em 0;
+}
+.post h2 {
+  margin-bottom: 0.2em;
+}
+.post p {
+  margin: 0.5em 0;
+}
+
+.full-post {
+  margin-top: 1em;
+  padding: 1em;
+  background-color: #1c1c1e;
+  border-left: 3px solid #ccc;
+  transition: all 0.3s ease;
 }
 
 /* Footer */
@@ -125,4 +144,11 @@ header {
   background-color: #1c1c1e;
   padding: 1rem 0;
   z-index: 1000;
+}
+
+/* Added to handle Posts in sidebar */
+.nav-section-title {
+  font-weight: bold;
+  margin-top: 1rem;
+  color: #333;
 }

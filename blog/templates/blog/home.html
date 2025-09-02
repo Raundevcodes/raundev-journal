@@ -2,44 +2,106 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta property="og:title" content="Raun's Developer Journal">
+  <meta property="og:description" content="Real-world dev stories and performance wins from a growing Django blog.">
+  <meta property="og:url" content="https://blog.raundev.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://blog.raundev.com/static/assets_raun/images/featured.jpg">
+  <meta name="csrf-token" content="{{ csrf_token }}">
+  <meta name="description" content="Follow Raun's journey from static websites to dynamic Django-powered applications. Real-world dev stories, performance wins, and personal growth — all in one evolving journal.">
+
   <title>RaunDev - Journal</title>
   {% load static %}
   <link rel="stylesheet" href="{% static 'assets_raun/styles_raun.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="canonical" href="https://blog.raundev.com/">
+ <title>Raun's Developer Journal | From Static to Dynamic</title>
+
 </head>
 <body>
 
-  <header>
-    <h1>RaunDev - Journal</h1>
-  </header>
+<header>
+  <h1>RaunDev - Journal</h1>
+</header>
 
-  <div class="container">
-    <aside class="sidebar">
-      <img src="{% static 'assets_raun/featured.jpg' %}" alt="Featured Image">
-      <nav>
-        <ul>
-          <li><a href="https://raundev.com/index.html">Home</a></li>
-        <!--  <li><a href="#">About Me</a></li>
-          <li><a href="#">Projects</a></li>
-          <li><a href="#">Contact</a></li> -->
-        </ul>
-      </nav>
-    </aside>
+<div class="container">
+  <aside class="sidebar">
+    <img src="{% static 'assets_raun/featured.jpg' %}" alt="Featured Image">
+    <nav>
+      <ul>
+        <li><a href="https://raundev.com/index.html">Home</a></li>
+      </ul>
+    </nav>
+  </aside>
 <main class="content">
   {% for post in posts %}
     <article class="post">
       <h2>{{ post.title }}</h2>
       <p class="post-date">Posted on {{ post.created_at|date:"F j, Y" }}</p>
-      <p>{{ post.body|linebreaks }}</p>
+
+      <p>
+        {% if post.summary %}
+          {{ post.summary }}
+        {% else %}
+          {% with post.body|linebreaksbr as body_html %}
+            {{ body_html|safe|truncatewords_html:30 }}
+          {% endwith %}
+        {% endif %}
+      </p>
+
+      <button onclick="togglePost('{{ post.pk }}')">Read more</button>
+
+      <div id="post-{{ post.pk }}" class="full-post" style="display: none;">
+        {% with post.body|linebreaksbr as full_body %}
+          {{ full_body|safe }}
+        {% endwith %}
+      </div>
+
+      <p><i class="fa fa-eye"></i> {{ post.views }} views</p>
     </article>
   {% empty %}
     <p>No posts yet!</p>
   {% endfor %}
 </main>
-  </div>
+
+</div>
 
   <footer>
     &copy; 2025 RaunDev. Built with Django and a lot of curiosity.
   </footer>
+<script>
+  function togglePost(id) {
+    const postDiv = document.getElementById(`post-${id}`);
+    const isHidden = postDiv.style.display === "none";
 
+    postDiv.style.display = isHidden ? "block" : "none";
+
+    // Only track view if it's being opened
+    if (isHidden) {
+      fetch(`/track-view/${id}/`, {
+        method: 'POST',
+        headers: {
+          'X-CSRFToken': getCookie('csrftoken'),
+        }
+      });
+    }
+  }
+
+  // Helper to get CSRF token from cookies
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+</script>
 </body>
 </html>

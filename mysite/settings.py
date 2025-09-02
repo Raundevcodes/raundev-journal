@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-rl#8vp5jjxfrmccwq8c-qfoq2i9gocbds&awj0-8kwfn3ik^f(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['raunblog.raundev.com', 'raundev-journal.onrender.com']
+ALLOWED_HOSTS = ['blog.raundev.com', 'www.blog.raundev.com']
 
 
 # Application definition
@@ -128,6 +128,7 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
